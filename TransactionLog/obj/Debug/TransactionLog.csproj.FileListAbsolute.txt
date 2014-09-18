@@ -1,0 +1,18 @@
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\bin\Debug\TransactionLog.exe.config
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\bin\Debug\TransactionLog.exe
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\bin\Debug\TransactionLog.pdb
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.csprojResolveAssemblyReference.cache
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.Form1.resources
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.Properties.Resources.resources
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.csproj.GenerateResource.Cache
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.exe
+C:\Users\Siwady\Documents\Downloads\TransactionLog\TransactionLog\obj\Debug\TransactionLog.pdb
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\bin\Debug\TransactionLog.exe.config
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.exe
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.pdb
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\bin\Debug\TransactionLog.exe
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\bin\Debug\TransactionLog.pdb
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.csprojResolveAssemblyReference.cache
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.Form1.resources
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.Properties.Resources.resources
+C:\Users\Siwady\Documents\UNITEC\Teoria de base de datos II\TransactionLog\TransactionLog\obj\Debug\TransactionLog.csproj.GenerateResource.Cache

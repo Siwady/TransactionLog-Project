@@ -77,14 +77,15 @@ namespace TransactionLog
         
         public static String Conversion_a_String_Varchar(String Hex)
         {
-            String value = "";
-            String hexvalue = DarleVuelta(Hex);
-            while (hexvalue.Length>0)
+            string Data1 = "";
+            string sData = "";
+            while (Hex.Length > 0)
             {
-                value += System.Convert.ToChar(System.Convert.ToUInt32(hexvalue.Substring(0, 2), 16)).ToString();
-                hexvalue = hexvalue.Substring(2, hexvalue.Length - 2);
+                Data1 = System.Convert.ToChar(System.Convert.ToUInt32(Hex.Substring(0, 2), 16)).ToString();
+                sData = sData + Data1;
+                Hex = Hex.Substring(2, Hex.Length - 2);
             }
-            return value;
+            return sData;
         }
 
         private static Double Conversion_a_Decimal(String Hex)
@@ -175,16 +176,27 @@ namespace TransactionLog
                 TotalColumnas = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
                 recorrer += 4;
                 recorrer += int.Parse((Math.Ceiling(((double)TotalColumnas / 8)) * 2).ToString());
-                //TotalColumnasVariables = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
+                TotalColumnasVariables = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
+                recorrer += 4;
+                int[] tamano = new int[camposVariables.Count];
+                for (int i = 0; i < camposVariables.Count; i++)
+                {
+                    tamano[i]=(Conversion_a_Int(rowlog.Substring(recorrer, 4))*2)+2; // +2 porque mi hex empieza con x0
+                    recorrer += 4;
+                }
 
                 for (int i = 0; i < camposVariables.Count; i++)
                 {
+                    
                     campos.Add(new Campos()
                     {
                         Nombre = camposVariables.ElementAt(i),
                         Type = "varchar",
-                        Tamaño = 0
+                        Tamaño = tamano[i],
+                        Valor = Conversion_a_String_Varchar(rowlog.Substring(recorrer, tamano[i]-recorrer))
+                        
                     });
+                    recorrer += tamano[i];
                 }
             }
             return campos;

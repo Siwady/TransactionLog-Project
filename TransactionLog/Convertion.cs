@@ -123,54 +123,59 @@ namespace TransactionLog
             return f;
         }
 
-        public static List<string> Recorrer(string rowlog,List<Campos> campos)
+        public static List<Campos> Recorrer(string rowlog,List<Campos> campos)
         {
             List<String> columnas=new List<string>();
             int recorrer = 10;
 
-            
+            int TotalColumnas = 0;
+            int TotalColumnasVariables = 0;
 
             for (int i = 0; i < campos.Count ;i++ )
             {
                 switch (campos.ElementAt(i).Type)
                 {
                     case "int":
-                        columnas.Add(Conversion_a_Int(rowlog.Substring(recorrer,campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor=Conversion_a_Int(rowlog.Substring(recorrer,campos.ElementAt(i).Tamaño)).ToString();
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "nchar":
-                        columnas.Add(Conversion_a_Char(rowlog.Substring(recorrer,4)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_Char(rowlog.Substring(recorrer, 4)).ToString());
                         recorrer += 4;
                         break;
                     case "float":
-                        columnas.Add(Conversion_a_Double(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_Double(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "bigint":
-                        columnas.Add(Conversion_a_BigInt(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_BigInt(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "money":
-                        columnas.Add(Conversion_a_Decimal(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_Decimal(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "decimal":
-                        columnas.Add(Conversion_a_Decimal(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_Decimal(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "real":
-                        columnas.Add(Conversion_del_Real(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_del_Real(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                     case "tinyint":
-                        columnas.Add(Conversion_a_TinyInt(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
+                        campos.ElementAt(i).Valor = (Conversion_a_TinyInt(rowlog.Substring(recorrer, campos.ElementAt(i).Tamaño)).ToString());
                         recorrer += campos.ElementAt(i).Tamaño;
                         break;
                 }
             }
+            /*
+            TotalColumnas = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
+            recorrer += 4;
+            recorrer += int.Parse((Math.Ceiling(((double)TotalColumnas / 8)) * 2).ToString());
+            TotalColumnasVariables = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());*/
 
-            recorrer += 6;
-            return columnas;
+            return campos;
         }
     }
 

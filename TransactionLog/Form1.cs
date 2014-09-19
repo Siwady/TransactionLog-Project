@@ -55,10 +55,10 @@ namespace TransactionLog
             Byte[] bytes=ConvertToBinary(rowlogContents0);
             List<Campos> campos=getCampos();
             //List<CamposNoFijos> camposNofijos = getCamposNofijos(campos);
-            SetTable(Conversiones.Recorrer(rowlogContents0,campos),campos);
+            SetTable(Conversiones.Recorrer(rowlogContents0,campos));
         }
 
-        private void SetTable(List<string> recorrer, List<Campos> campos)
+        private void SetTable(List<Campos> campos)
         {
             DataTable dt = new DataTable();
             dt.Clear();
@@ -70,7 +70,7 @@ namespace TransactionLog
 
             for (int i = 0; i < campos.Count; i++)
             {
-                row[campos.ElementAt(i).Nombre] = recorrer.ElementAt(i);
+                row[campos.ElementAt(i).Nombre] = campos.ElementAt(i).Valor;
             }
             dt.Rows.Add(row);
             dataGridView1.DataSource = dt;

@@ -123,7 +123,7 @@ namespace TransactionLog
             return f;
         }
 
-        public static List<Campos> Recorrer(string rowlog,List<Campos> campos)
+        public static List<Campos> Recorrer(string rowlog,List<Campos> campos,List<String>camposVariables )
         {
             List<String> columnas=new List<string>();
             int recorrer = 10;
@@ -169,12 +169,24 @@ namespace TransactionLog
                         break;
                 }
             }
-            /*
-            TotalColumnas = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
-            recorrer += 4;
-            recorrer += int.Parse((Math.Ceiling(((double)TotalColumnas / 8)) * 2).ToString());
-            TotalColumnasVariables = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());*/
 
+            if (camposVariables.Count!=0)
+            {
+                TotalColumnas = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
+                recorrer += 4;
+                recorrer += int.Parse((Math.Ceiling(((double)TotalColumnas / 8)) * 2).ToString());
+                //TotalColumnasVariables = int.Parse(Conversion_a_Int(rowlog.Substring(recorrer, 4)).ToString());
+
+                for (int i = 0; i < camposVariables.Count; i++)
+                {
+                    campos.Add(new Campos()
+                    {
+                        Nombre = camposVariables.ElementAt(i),
+                        Type = "varchar",
+                        Tamaño = 0
+                    });
+                }
+            }
             return campos;
         }
     }

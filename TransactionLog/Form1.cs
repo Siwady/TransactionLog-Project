@@ -55,7 +55,35 @@ namespace TransactionLog
             Byte[] bytes=ConvertToBinary(rowlogContents0);
             List<Campos> campos=getCampos();
             //List<CamposNoFijos> camposNofijos = getCamposNofijos(campos);
-            SetTable(Conversiones.Recorrer(rowlogContents0,campos));
+            List<String> camposVariables = getCamposVarables();
+            SetTable(Conversiones.Recorrer(rowlogContents0,campos,camposVariables));
+        }
+
+        private List<string> getCamposVarables()
+        {
+            List<String> camposVariables=new List<string>();
+            cmd = new SqlCommand
+            {
+                CommandText =
+                    @"Select column_name as Name,data_type as Tipo from information_schema.columns where TABLE_NAME = '"+Table.Text+"'",
+                CommandType = CommandType.Text,
+                Connection = _con
+            };
+            _con.Open();
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (reader["Tipo"].ToString().Equals("varchar"))
+                {
+                    camposVariables.Add(reader["Name"].ToString());
+                }
+            }
+            reader.Close();
+            reader.Dispose();
+            cmd.Dispose();
+            _con.Close();
+            return camposVariables;
         }
 
         private void SetTable(List<Campos> campos)
